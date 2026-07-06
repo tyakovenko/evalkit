@@ -1,0 +1,4 @@
+# Core (protocol, calibration, trajectory) needs nothing beyond the stdlib.
+# Only the fidelity grader needs embeddings:
+numpy
+sentence-transformers
