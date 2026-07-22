@@ -1,6 +1,6 @@
 # evalkit
 
-A thin protocol for **evaluations**.  It encodes five principles I keep arriving at
+A thin protocol for **evaluations**. It encodes five principles I keep arriving at
 across very different eval problems, and it enforces the load-bearing ones in code.
 
 The same protocol expresses three graders drawn from real projects:
@@ -24,7 +24,7 @@ The same protocol expresses three graders drawn from real projects:
 
 3. **Always show the baseline.** A number alone means nothing. Beat a coin flip
    (Brier vs 0.75), a standalone model, an unguarded agent. `EvalReport` cannot be
-   built without a baseline — the comparison *is* the finding.
+   built without a baseline; the comparison *is* the finding.
 
 4. **Report the null.** When the intervention does nothing (a guard that never
    fires on clean inputs) or backfires (an edit pass that lowers quality), that is
@@ -32,13 +32,13 @@ The same protocol expresses three graders drawn from real projects:
 
 5. **Two graders: guard + judge.** Deterministic/formal checks for hard invariants,
    an LLM judge for the fuzzy rest. This is where the methodology graduates from a
-   study into an architecture — it is the guard/judge layer of the octopus agent
+   study into an architecture: it is the guard/judge layer of the octopus agent
    orchestrator, prototyped in tlaGuards.
 
 ## Run it
 
 ```bash
-python examples/demo_trajectory.py    # guarded vs unguarded — catches "deployed untested"
+python examples/demo_trajectory.py    # guarded vs unguarded: catches "deployed untested"
 python examples/demo_calibration.py   # model vs coin flip on Brier
 ```
 
@@ -52,7 +52,7 @@ evalkit/
   protocol.py        Grader ABC, validation gate, run_eval, EvalReport
   stats.py           Spearman (pure Python)
   graders/
-    fidelity.py      empirical validation — the one that must be checked against gold
+    fidelity.py      empirical validation, the one that must be checked against gold
     calibration.py   by-construction (Brier)
     trajectory.py    by-construction (safety spec; formal version in tlaGuards)
 examples/            runnable demos
@@ -60,6 +60,6 @@ docs/methodology.md  the long-form version
 ```
 
 The three graders are deliberately different mechanically (cosine, Brier,
-model-checking). They are **not** merged into one pipeline — that would be theater.
+model-checking). They are **not** merged into one pipeline; that would be theater.
 What they share is the *protocol*: validate the grader, show the baseline, grade
 the path, report the null.
