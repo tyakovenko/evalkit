@@ -1,7 +1,6 @@
 # evalkit
 
-A thin protocol for **evaluations you can trust** — and a statement of how I think
-about evals. Not a metrics library. It encodes five principles I keep arriving at
+A thin protocol for **evaluations**.  It encodes five principles I keep arriving at
 across very different eval problems, and it enforces the load-bearing ones in code.
 
 The same protocol expresses three graders drawn from real projects:
@@ -12,13 +11,13 @@ The same protocol expresses three graders drawn from real projects:
 | **calibration (Brier)** | [fishy](https://github.com/tyakovenko/fishy) | by construction (proper scoring rule) | a probabilistic prediction vs outcome |
 | **trajectory (safety-spec)** | [tlaGuards](https://github.com/tyakovenko/tlaGuards) → octopus | by construction (a formal spec) | an agent's whole tool-call trace |
 
-## The five principles
+## The five key ideas
 
 1. **The grader is the experiment.** Before you measure the system, measure the
    measurer. `run_eval` **refuses to run an unvalidated grader** — an unvalidated
    grader is confident noise. Validate empirically (correlate against human-gold,
    check a null floor) or establish correctness by construction (a proper scoring
-   rule, a formal spec). Both are honest; pretending is not.
+   rule, a formal spec).
 
 2. **Grade the trajectory, not the final state.** The failures that matter are
    invisible to an outcome score: the claim survives but the reasoning is dropped;
