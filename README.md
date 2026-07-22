@@ -14,9 +14,7 @@ The same protocol expresses three graders drawn from real projects:
 ## The five key ideas
 
 1. **The grader is the experiment.** Before you measure the system, measure the
-   measurer. `run_eval` **refuses to run an unvalidated grader** — an unvalidated
-   grader is confident noise. Validate empirically (correlate against human-gold,
-   check a null floor) or establish correctness by construction (a proper scoring
+   measurer. `run_eval` **refuses to run an unvalidated grader** to avoid confident noise. Validate empirically or establish correctness by construction (a proper scoring
    rule, a formal spec).
 
 2. **Grade the trajectory, not the final state.** The failures that matter are
